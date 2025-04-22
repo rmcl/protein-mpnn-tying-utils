@@ -111,7 +111,11 @@ def load_and_merge_existing_json_records( jsonl_path: str) -> Dict:
     return all_existing_records
 
 
-def create_fixed_and_tied_residue_sets(combined_pose : Pose, designed_residues : List[int], tied_chains : List[Tuple[str]]) -> Dict:
+def create_fixed_and_tied_residue_sets(
+    combined_pose : Pose,
+    tied_chains : List[Tuple[str]],
+    designed_residues : List[int] = None
+) -> Dict:
     """Given a Pose object create a dictionary of fixed and tied residues.
 
     This method expects a pose with two or more chains. The last chain is assumed
@@ -198,7 +202,7 @@ def create_fixed_and_tied_residue_sets(combined_pose : Pose, designed_residues :
                 chain_2: [[i], [weight]]
             })
 
-    designed_residues_set = set(designed_residues)
+    #designed_residues_set = set(designed_residues)
 
     fixed_residues_by_chain = {}
     """

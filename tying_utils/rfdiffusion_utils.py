@@ -75,6 +75,8 @@ def get_name_and_sequence_from_pdb(pdb_path: str) -> Dict[str, str]:
 
     chains_poses = split_chains_by_residue_distance(rfdiffusion_output_pose)
 
+    print(chains_poses)
+
     sequences = {}
     for chain_name, chain_pose in chains_poses.items():
         if chain_name == 'all':
@@ -86,7 +88,9 @@ def get_name_and_sequence_from_pdb(pdb_path: str) -> Dict[str, str]:
         ])
         sequences[chain_name] = chain_sequence
 
+
     return {
         'design_name': design_name,
-        'chain_sequences': sequences
+        'chain_sequences': sequences,
+        'chain_poses': chains_poses,
     }
